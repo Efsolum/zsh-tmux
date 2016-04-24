@@ -1,0 +1,10 @@
+# -*- mode: sh; sh-shell: zsh;-*-
+
+function_dir=$(dirname $_)
+fpath=($function_dir $fpath)
+
+for func in $(ls $function_dir) ;
+do
+		[[ $func == 'index' ]] && continue
+    autoload -U $func
+done
